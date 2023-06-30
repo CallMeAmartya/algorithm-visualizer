@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualize Algorithms!</title>
+    <link rel="stylesheet" href="styles/sorting.css" />
+  </head>
+  <body>
+    <p class="header">Welcome to Algorithm Visualizer!</p>
+    <div class="controls-grid">
+      <input
+        type="number"
+        placeholder="Enter Number one by one"
+        class="js-number-input input-box"
+        onkeydown="handleInputKeyDownEvent(event)"
+      />
+      <button class="add-button" onclick="appendNumber()">Add</button>
+      <button class="sort-button" onclick="sort()">Sort</button>
+      <button class="reset-button" onclick="resetArray()">Reset</button>
+      <button class="clear-button" onclick="clearArray()">Clear</button>
+      <div class="animation-speed-div">
+        <input
+          type="range"
+          class="js-animation-speed-bar animation-speed-bar"
+          min="0.25"
+          max="3"
+          value="1"
+          step="0.25"
+        />
+        <label for="animation-speed-bar">Speed</label>
+      </div>
+    </div>
+    <div class="js-numbers-array array-grid"></div>
+    <script src="scripts/VisualizeAlgorithm.js"></script>
+  </body>
+</html>
