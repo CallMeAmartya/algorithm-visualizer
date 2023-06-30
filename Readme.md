@@ -2,6 +2,8 @@
 
 Welcome to Algorithm Visualizer! This project allows you to visualize the bubble sort algorithm by rendering an array of numbers as a set of div elements on a webpage.
 
+You can access the website via [this link](https://callmeamartya.github.io/algorithm-visualizer/sorting.html)
+
 ![Algorithm Visualizer Demo](demo.gif)
 
 ## Features
