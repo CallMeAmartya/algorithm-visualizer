@@ -1,6 +1,7 @@
 body {
   background-color: #010a01;
   color: #fff;
+  font-family: "Vibur", sans-serif;
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #0fa;
 }
 
@@ -11,10 +12,7 @@ body {
 }
 
 .array-grid {
-  position: fixed;
-  bottom: 100px;
-  left: 100px;
-  right: 100px;
+  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -31,7 +29,6 @@ body {
 }
 
 .controls-grid {
-  margin-bottom: 50px;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -51,10 +48,12 @@ body {
 .sort-button,
 .reset-button,
 .clear-button {
+  font-family: inherit;
+  font-weight: bold;
   z-index: 100;
   margin-right: 20px;
   box-shadow: 0 0 7px #fff, 0 0 10px #0fa;
-  width: 50px;
+  width: 60px;
   border: 0;
   cursor: pointer;
   transition: all 0.3s;
@@ -65,11 +64,25 @@ body {
 .reset-button:hover,
 .clear-button:hover {
   box-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #0fa;
-  width: 55px;
+  width: 65px;
   height: 45px;
 }
 
 .controls-grid .animation-speed-div .animation-speed-bar {
   position: relative;
   z-index: 100;
+}
+
+.playground {
+  display: flex;
+  padding-top: 50px;
+  justify-content: center;
+  position: relative;
+}
+
+.timer {
+  color: white;
+  position: absolute;
+  top: 20px;
+  right: 100px;
 }

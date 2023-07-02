@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Visualize Algorithms!</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Vibur:400"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link rel="stylesheet" href="styles/sorting.css" />
   </head>
   <body>
@@ -11,14 +16,14 @@
     <div class="controls-grid">
       <input
         type="number"
-        placeholder="Enter Number one by one"
+        placeholder="enter numbers one by one"
         class="js-number-input input-box"
         onkeydown="handleInputKeyDownEvent(event)"
       />
-      <button class="add-button" onclick="appendNumber()">Add</button>
-      <button class="sort-button" onclick="sort()">Sort</button>
-      <button class="reset-button" onclick="resetArray()">Reset</button>
-      <button class="clear-button" onclick="clearArray()">Clear</button>
+      <button class="add-button" onclick="appendNumber()">ADD</button>
+      <button class="sort-button" onclick="sort()">SORT</button>
+      <button class="reset-button" onclick="resetArray()">RESET</button>
+      <button class="clear-button" onclick="clearArray()">CLEAR</button>
       <div class="animation-speed-div">
         <input
           type="range"
@@ -31,7 +36,10 @@
         <label for="animation-speed-bar">Speed</label>
       </div>
     </div>
-    <div class="js-numbers-array array-grid"></div>
+    <div class="playground">
+      <div class="js-numbers-array array-grid"></div>
+      <div class="js-timer timer"></div>
+    </div>
     <script src="scripts/VisualizeAlgorithm.js"></script>
   </body>
 </html>

@@ -5,6 +5,12 @@ let numberArray = [
 
 let animationDelay = 200;
 
+let sortingInProgress = false;
+
+let terminateSort = false;
+
+let timerInterval;
+
 renderDefaultArray();
 
 /**
@@ -12,6 +18,10 @@ renderDefaultArray();
  * @returns nothing (undefined).
  */
 function appendNumber() {
+  if (sortingInProgress) {
+    window.alert("Please wait till current execution is complete.");
+    return;
+  }
   const numericInputElement = document.querySelector(".js-number-input");
   const inputNumber = Number(numericInputElement.value);
   if (inputNumber <= 0 || inputNumber > 70) {
@@ -29,9 +39,21 @@ function appendNumber() {
  * the array before and after sorting.
  */
 async function sort() {
+  if (sortingInProgress) return;
+  sortingInProgress = true;
   console.log("Before sort: " + numberArray);
+  startTimer();
   for (let i = 0; i < numberArray.length - 1; i++) {
     for (let j = 0; j < numberArray.length - i - 1; j++) {
+      if (terminateSort) {
+        endTimer();
+        i = numberArray.length;
+        j = numberArray.length;
+        terminateSort = false;
+        sortingInProgress = false;
+        console.log("Sort terminated early");
+        return;
+      }
       if (numberArray[j] > numberArray[j + 1]) {
         const temp = numberArray[j + 1];
         numberArray[j + 1] = numberArray[j];
@@ -43,7 +65,9 @@ async function sort() {
       await delay(animationDelay);
     }
   }
+  endTimer();
   renderArrayWhileSorting(0);
+  sortingInProgress = false;
   console.log("After sort: " + numberArray);
 }
 
@@ -52,6 +76,9 @@ async function sort() {
  * "renderDefaultArray" function.
  */
 function resetArray() {
+  if (sortingInProgress) {
+    terminateSort = true;
+  }
   numberArray = [
     57, 12, 34, 68, 23, 51, 6, 41, 19, 63, 29, 55, 9, 39, 60, 47, 17, 25, 52, 3,
     66, 30, 14, 42, 59, 21, 49, 15, 31, 7,
@@ -65,6 +92,31 @@ function resetArray() {
 function clearArray() {
   numberArray = [];
   renderDefaultArray();
+}
+
+function startTimer() {
+  let startTime = new Date().getTime();
+  timerInterval = setInterval(() => {
+    let currentTime = new Date().getTime();
+    let elapsedTime = currentTime - startTime;
+    let formattedTime = formatTime(elapsedTime);
+    document.querySelector(".js-timer").innerHTML = formattedTime;
+  }, 10);
+}
+
+function endTimer() {
+  clearInterval(timerInterval);
+  console.log("Timer reset");
+}
+
+function formatTime(time) {
+  let minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((time % (1000 * 60)) / 1000);
+  if (seconds < 10) seconds = "0" + seconds;
+  let milliseconds = Math.floor((time % 1000) / 10);
+  return minutes
+    ? `${minutes}:${seconds}.${milliseconds.toString().padStart(2, "0")}`
+    : `${seconds}.${milliseconds.toString().padStart(2, "0")}`;
 }
 
 /**
